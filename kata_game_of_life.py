@@ -2,22 +2,8 @@
 
 ## Milestone 1: Game of life implementation
 
-import random
-from copy import deepcopy
 
-def grid_generator(rows, columns):
-    """
-    INPUT
-    -row: number in the list
-    -column: number of elements inside the nested list
-    OUTPUT
-    -nested list: with #row elements, and #columns inside each row element
-    """
-    row = rows
-    column = columns
-    cells = ['.','O']
-    grid = [[random.choice(cells) for i in range(column)] for h in range(row)]
-    return grid
+from copy import deepcopy
 
 
 def get_ASCII_file(path):
@@ -35,7 +21,6 @@ def get_ASCII_file(path):
             grid_board = [list(columns[:-1]) for columns in rows][1:-1]
     except:
         print("unvalid file")
-
     valid_state = valid_file(grid_board)
     if valid_state == True:
         return grid_board
@@ -50,7 +35,6 @@ def valid_file(grid):
                 validation = False
                 print("unvalid file, no valid value")
                 break
-
     return validation
 
 def get_adjacents(grid, cell_row, cell_column):
@@ -68,7 +52,6 @@ def get_adjacents(grid, cell_row, cell_column):
 
     for y in range(-1, 2):
         for x in range(-1, 2):
-
             valid_neighbor = True
             neighbor_row = cell_row + y
             neighbor_column = cell_column + x
@@ -81,7 +64,6 @@ def get_adjacents(grid, cell_row, cell_column):
             if valid_neighbor:
                 if grid[neighbor_row][neighbor_column] == 'O':
                     count_adj_cells += 1
-
     return count_adj_cells
 
 
@@ -103,7 +85,6 @@ def count_adjacents(grid):
                 new_grid[row][cell] = "O"
             if grid[row][cell] == "O" and life_neighbors not in [2, 3]:
                 new_grid[row][cell] = "."
-
     return new_grid
 
 
@@ -119,7 +100,6 @@ def render_path(grid):
         text_file += ','.join(i)+"\n"
     text_file = text_file.replace(",","")
     print(text_file)
-
     return text_file
 
 
