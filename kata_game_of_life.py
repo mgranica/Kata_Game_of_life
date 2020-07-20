@@ -113,7 +113,7 @@ def run_game(path):
     grid = get_ASCII_file(path)
     ticket_grid = "cat {}".format(path)
     new_grid = count_adjacents(grid)
-    text_grid = render_path(new_grid)
+  
 
     while True:
         ticket_grid += " | gameoflife"
